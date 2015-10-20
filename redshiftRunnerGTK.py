@@ -7,6 +7,10 @@ def closeRunner():
 	os.system('killall redshiftRunner')
 	# 6500 is netural
 	os.system('redshift -O 6500')
+def openRunner():
+	#close runner if open, this keeps stacking from occuring on logout and back in
+	closeRunner()
+	os.system('redshiftRunner_daemon &')
 class SystrayIconApp:
 	def __init__(self):
 		self.tray = gtk.StatusIcon()
@@ -38,10 +42,10 @@ class SystrayIconApp:
 	def disable(self,widget):
 		closeRunner()
 	def enable(self,widget):
-		os.system('redshiftRunner_daemon &')
+		openRunner()
 if __name__ == "__main__":
 	# launch the daemon on launch of trayIcon
-	os.system('redshiftRunner_daemon &')
+	openRunner()
 	# create trayIcon
 	SystrayIconApp()
 	gtk.main()
