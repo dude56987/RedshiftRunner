@@ -16,10 +16,13 @@ build-deb:
 	mkdir -p debian/usr/bin
 	mkdir -p debian/usr/share/applications
 	mkdir -p debian/etc/xdg/autostart
+	mkdir -p ./debian/usr/share/pixmaps/
 	# copy over launcher so it will show in the menu
 	cp redshiftRunner.desktop ./debian/usr/share/applications/redshiftRunner.desktop
 	# copy over launcher to autostart on user login
 	cp redshiftRunner.desktop ./debian/etc/xdg/autostart/redshiftRunner.desktop
+	# copy icon to system
+	cp redshift.svg ./debian/usr/share/pixmaps/redshift.svg
 	# copy over executables
 	cp redshiftRunner.py ./debian/usr/bin/redshiftRunner
 	cp redshiftRunnerGTK.py ./debian/usr/bin/redshiftRunnerGTK

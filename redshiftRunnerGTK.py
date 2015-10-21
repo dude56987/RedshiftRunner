@@ -14,7 +14,7 @@ def openRunner():
 class SystrayIconApp:
 	def __init__(self):
 		self.tray = gtk.StatusIcon()
-		self.tray.set_from_file('/usr/share/icons/hicolor/scalable/apps/redshift.svg')
+		self.tray.set_from_file('/usr/share/pixmaps/redshift.svg')
 		self.tray.connect('popup-menu', self.on_right_click)
 		self.tray.set_tooltip(('Redshift Runner Tray Controls'))
 	def on_right_click(self, icon, event_button, event_time):
