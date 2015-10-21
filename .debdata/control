@@ -6,6 +6,6 @@ Installed-Size: 48
 Homepage: hacker-haven.com
 Priority: optional
 Architecture: all
-Depends: python (>=2.7)
+Depends: python (>=2.7), redshift
 Description: Tray icon and cli script to run Redshift based on time of day.
  ReshiftRunner runs redshift based on the time of day. Noon is the brightest and midnight is the darkest.
