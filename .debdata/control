@@ -1,0 +1,11 @@
+Package: redshiftrunner
+Version: 0.1
+Section: utils
+Maintainer: Carl J Smith <BM-NBHLt5EUFVEbRCmrbVrfCyaB2c8d24U9>
+Installed-Size: 48
+Homepage: hacker-haven.com
+Priority: optional
+Architecture: all
+Depends: python (>=2.7)
+Description: Tray icon and cli script to run Redshift based on time of day.
+ ReshiftRunner runs redshift based on the time of day. Noon is the brightest and midnight is the darkest.
