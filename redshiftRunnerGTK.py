@@ -14,9 +14,10 @@ def openRunner():
 class SystrayIconApp:
 	def __init__(self):
 		self.tray = gtk.StatusIcon()
-		self.tray.set_from_file('/usr/share/pixmaps/redshift.svg')
 		self.tray.connect('popup-menu', self.on_right_click)
 		self.tray.set_tooltip(('Redshift Runner Tray Controls'))
+		# enable redshift on init
+		self.enable('activate')
 	def on_right_click(self, icon, event_button, event_time):
 		self.make_menu(event_button, event_time)
 	def make_menu(self, event_button, event_time):
@@ -40,12 +41,12 @@ class SystrayIconApp:
 		# show popup menu
 		menu.popup(None, None, gtk.status_icon_position_menu,event_button, event_time, self.tray)
 	def disable(self,widget):
+		self.tray.set_from_file('/usr/share/redshiftRunner/redshift_off.svg')
 		closeRunner()
 	def enable(self,widget):
+		self.tray.set_from_file('/usr/share/redshiftRunner/redshift.svg')
 		openRunner()
 if __name__ == "__main__":
-	# launch the daemon on launch of trayIcon
-	openRunner()
 	# create trayIcon
 	SystrayIconApp()
 	gtk.main()
