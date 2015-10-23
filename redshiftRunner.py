@@ -8,10 +8,10 @@ maxNum=6500.0
 minNum=2500.0
 # find total dist, divide by 12 hours multuplied by minutes
 increment=((maxNum-minNum)/(12*60))
-if '--debug' in sys.argv:
+if '--demo' in sys.argv:
 	currentTime=[0,0,0,0,0,0,0]
 while True:
-	if '--debug' in sys.argv:
+	if '--demo' in sys.argv:
 		if currentTime[3]>24:
 			currentTime[3]=0
 		else:
@@ -19,7 +19,8 @@ while True:
 	else:
 		currentTime=time.localtime()
 	# hour:minute:second
-	print(str(currentTime[3])+':'+str(currentTime[4])+':'+str(currentTime[5]))
+	if '--debug' in sys.argv:
+		print(str(currentTime[3])+':'+str(currentTime[4])+':'+str(currentTime[5]))
 	# reverse the orders in order to make it a bell curve of brightness
 	if currentTime[3]>12:
 		# if over 12 convert back to 12 hour format
@@ -29,11 +30,12 @@ while True:
 		hour=12-currentTime[3]
 	# multuply brightness by total minutes, this changes brightness every minute
 	brightness=int((maxNum-(((hour*60)+currentTime[4])*increment)))
-	print('redshift -O '+str(brightness))
+	if '--debug' in sys.argv:
+		print('redshift -O '+str(brightness))
 	system('redshift -O '+str(brightness))
 	# pause the system 
-	if '--debug' in sys.argv:
-		# pause for 1 second in debug
+	if '--demo' in sys.argv:
+		# pause for 1 second in demo
 		sleep(1)	
 	else:
 		# pause for one minute during regular execution
