@@ -24,15 +24,20 @@ class SystrayIconApp:
 		# create menu
 		menu = gtk.Menu()
 		# add enable item
-		enable = gtk.MenuItem("Enable")
+		enable = gtk.MenuItem("Automatic")
 		enable.show()
 		menu.append(enable)
 		enable.connect('activate',self.enable)
 		# add disable item
-		disable = gtk.MenuItem("Disable")
+		disable = gtk.MenuItem("Full Brightness")
 		disable.show()
 		menu.append(disable)
 		disable.connect('activate',self.disable)
+		# add full darkness item
+		fullDarkness = gtk.MenuItem("Full Darkness")
+		fullDarkness .show()
+		menu.append(fullDarkness)
+		fullDarkness.connect('activate',self.fullDark)
 		# add quit item
 		quit = gtk.MenuItem("Quit")
 		quit.show()
@@ -40,6 +45,10 @@ class SystrayIconApp:
 		quit.connect('activate', gtk.main_quit)
 		# show popup menu
 		menu.popup(None, None, gtk.status_icon_position_menu,event_button, event_time, self.tray)
+	def fullDark(self,widget):
+		self.tray.set_from_file('/usr/share/redshiftRunner/redshift.svg')
+		closeRunner()
+		os.system('redshift -O 2500')
 	def disable(self,widget):
 		self.tray.set_from_file('/usr/share/redshiftRunner/redshift_off.svg')
 		closeRunner()
